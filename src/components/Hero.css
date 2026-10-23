@@ -1,0 +1,353 @@
+/* =============================================
+   HERO  —  Red & Black Split Layout
+============================================= */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+  padding-top: 68px;
+}
+
+/* ── MAIN SPLIT ── */
+.hero__main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  position: relative;
+}
+
+/* ── LEFT ── */
+.hero__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px 56px 56px 68px;
+  background: linear-gradient(160deg, #000 55%, #100202 100%);
+  position: relative;
+  z-index: 2;
+}
+
+/* Red vertical accent bar on left edge */
+.hero__left::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 3px;
+  background: linear-gradient(180deg, transparent, var(--red), transparent);
+  border-radius: 2px;
+}
+
+.hero__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 80, 80, 0.6);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero__eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px; height: 2px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+/* Title */
+.hero__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 4.8vw, 4.4rem);
+  font-weight: 900;
+  line-height: 1.03;
+  color: #fff;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+.hero__title--red {
+  color: var(--red-400);
+  -webkit-text-fill-color: initial;
+  display: inline;
+}
+
+/* Description */
+.hero__desc {
+  font-size: 1rem;
+  color: rgba(255, 200, 200, 0.55);
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 32px;
+}
+
+/* Feature badges */
+.hero__features {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.hero__feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero__feature-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(204, 0, 0, 0.5);
+  background: rgba(204, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red-300);
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+.hero__feature:hover .hero__feature-icon {
+  background: rgba(204, 0, 0, 0.25);
+  border-color: var(--red-400);
+  box-shadow: 0 0 14px rgba(204,0,0,0.4);
+}
+.hero__feature-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.2;
+}
+.hero__feature-sub {
+  font-size: 0.71rem;
+  color: rgba(255, 180, 180, 0.45);
+  margin-top: 1px;
+}
+
+/* CTA Button */
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--red-400) 0%, var(--red-900) 100%);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 17px 38px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.28s ease;
+  box-shadow: 0 4px 28px rgba(204, 0, 0, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+.hero__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.hero__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(204, 0, 0, 0.7);
+}
+.hero__cta:hover::before { opacity: 1; }
+
+/* ── RIGHT ── */
+.hero__right {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0a0000 0%, #180404 100%);
+}
+
+/* Diagonal red stripe from left to right edge */
+.hero__right::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -60px; bottom: 0;
+  width: 60px;
+  background: linear-gradient(90deg, #000, transparent);
+  z-index: 3;
+}
+
+/* Shield */
+.hero__shield {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.hero__shield svg {
+  width: 75%;
+  height: 80%;
+  filter: drop-shadow(0 0 32px rgba(204,0,0,0.5));
+  animation: shield-pulse 3.5s ease-in-out infinite;
+}
+@keyframes shield-pulse {
+  0%,100% { opacity: 0.75; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.04); }
+}
+
+/* Technician */
+.hero__technician {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 96%;
+  width: auto;
+  object-fit: cover;
+  object-position: top;
+  z-index: 2;
+  filter: drop-shadow(0 0 50px rgba(204,0,0,0.35));
+}
+
+/* Red glow at bottom */
+.hero__glow-blob {
+  position: absolute;
+  bottom: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 540px; height: 540px;
+  background: radial-gradient(circle, rgba(204,0,0,0.35) 0%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── BOTTOM STRIP ── */
+.hero__strip {
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+  min-height: 96px;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.6);
+}
+
+/* Pest icons */
+.hero__strip-pests {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 16px 40px;
+  gap: 0;
+  justify-content: space-between;
+}
+.hero__pest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 12px;
+  transition: transform 0.22s ease;
+  flex: 1;
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+.hero__pest:last-child { border-right: none; }
+.hero__pest:hover { transform: translateY(-3px); }
+.hero__pest-icon {
+  position: relative;
+  width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero__pest-icon span { font-size: 1.6rem; position: relative; z-index: 2; }
+.hero__pest-circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2.5px solid #cc0000;
+  background:
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - 1.5px),
+      #cc0000 calc(50% - 1.5px),
+      #cc0000 calc(50% + 1.5px),
+      transparent calc(50% + 1.5px)
+    );
+}
+.hero__pest-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #1a0000;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Service buttons */
+.hero__strip-services {
+  display: flex;
+  align-items: stretch;
+  background: var(--red);
+  clip-path: polygon(28px 0%, 100% 0%, 100% 100%, 0% 100%);
+  padding-left: 44px;
+}
+.hero__service-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 20px 28px;
+  transition: background 0.22s ease;
+  white-space: nowrap;
+}
+.hero__service-btn:hover { background: rgba(0,0,0,0.18); }
+.hero__strip-divider { width: 1px; background: rgba(255,255,255,0.22); margin: 14px 0; }
+.hero__service-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,200,200,0.75);
+  margin-bottom: 2px;
+}
+.hero__service-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero__left { padding: 56px 40px 48px 48px; }
+  .hero__title { font-size: clamp(2rem, 4vw, 3.2rem); }
+  .hero__strip-pests { padding: 14px 24px; }
+  .hero__service-btn { padding: 18px 20px; }
+}
+@media (max-width: 768px) {
+  .hero { padding-top: 60px; }
+  .hero__main { grid-template-columns: 1fr; }
+  .hero__left  { padding: 44px 22px 36px; order: 1; }
+  .hero__right { height: 280px; order: 0; }
+  .hero__strip { flex-direction: column; min-height: auto; }
+  .hero__strip-pests { padding: 14px 16px; overflow-x: auto; justify-content: flex-start; flex-wrap: nowrap; }
+  .hero__strip-services { clip-path: none; padding-left: 20px; }
+  .hero__features { gap: 14px; }
+  .hero__cta { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .hero__title { font-size: 2.1rem; }
+  .hero__features { flex-direction: column; gap: 10px; }
+}
