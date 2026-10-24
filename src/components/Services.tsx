@@ -231,6 +231,43 @@ export default function Services() {
           </div>
         </div>
 
+        {/* ── Services Targets & Aroma Preview Bar ── */}
+        <div className="services-targets-preview">
+          <div className="preview-label">
+            <span>Specialized In</span>
+          </div>
+          <div className="preview-chips-wrap">
+            <div className="preview-chip preview-chip--pest" onClick={() => setFilter('pest')}>
+              <span className="chip-icon">🪳</span>
+              <span className="chip-name">Cockroaches</span>
+            </div>
+            <div className="preview-chip preview-chip--pest" onClick={() => setFilter('pest')}>
+              <span className="chip-icon">🪵</span>
+              <span className="chip-name">Termites</span>
+            </div>
+            <div className="preview-chip preview-chip--pest" onClick={() => setFilter('pest')}>
+              <span className="chip-icon">🕷️</span>
+              <span className="chip-name">Bedbugs</span>
+            </div>
+            <div className="preview-chip preview-chip--pest" onClick={() => setFilter('pest')}>
+              <span className="chip-icon">🦟</span>
+              <span className="chip-name">Mosquitoes</span>
+            </div>
+            <div className="preview-chip preview-chip--fragrance" onClick={() => setFilter('fragrance')}>
+              <span className="chip-icon">👑</span>
+              <span className="chip-name">Royal Oud</span>
+            </div>
+            <div className="preview-chip preview-chip--fragrance" onClick={() => setFilter('fragrance')}>
+              <span className="chip-icon">✨</span>
+              <span className="chip-name">Amber Musk</span>
+            </div>
+            <div className="preview-chip preview-chip--fragrance" onClick={() => setFilter('fragrance')}>
+              <span className="chip-icon">🌿</span>
+              <span className="chip-name">Sandalwood</span>
+            </div>
+          </div>
+        </div>
+
         {/* Enhanced Glassmorphic Service Cards Grid */}
         <div className="services-grid" role="list">
           {filteredServices.map((svc) => (

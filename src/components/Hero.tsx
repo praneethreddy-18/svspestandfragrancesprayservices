@@ -218,34 +218,86 @@ export default function Hero() {
       <div className="hero-ambient-glow" />
 
       <div className="container hero-snackz-container">
-        {/* Top Floating Badge */}
-        <div className="hero-badge-wrap">
-          <div className="hero-live-badge">
+        {/* Standard Contained Hero Billboard */}
+        <div className="hero-billboard-wrap">
+          {/* Dedicated Background Image Layer (Dual Pest Defense & Luxury Fragrance Diffuser) */}
+          <img
+            src="/pest_technician_hero_bg.jpg"
+            alt="Professional Pest Control Defense & Luxury Fragrance Scenting in Karimnagar"
+            className="billboard-bg-img"
+          />
+          <div className="billboard-gradient-overlay" />
+
+          <div className="hero-billboard-content">
+          <div className="billboard-kicker">
             <span className="live-dot-pulse" />
-            <span>24/7 Rapid Response · Karimnagar · CIB Approved & IFRA Geneva Standards</span>
-          </div>
-        </div>
-
-        {/* Hero Title & Subtitle with Impactful Quotes */}
-        <div className="hero-title-area">
-          <div className="hero-quote-pill">
-            <span className="quote-icon">“</span>
-            <span>Where Absolute Hygiene Meets Unrivaled Luxury</span>
-            <span className="quote-icon">”</span>
+            <span>PEST DEFENSE · LUXURY AMBIENT SCENTING · KARIMNAGAR</span>
           </div>
 
-          <h1 className="hero-h1">
-            Defense-Grade <span className="text-red-glow">Pest Elimination</span> &{' '}
-            <span className="text-gold-glow">Bespoke Ambient Scenting</span>
+          <h1 className="billboard-h1">
+            PROTECT YOUR SPACE.<br />
+            <span className="billboard-highlight">SCENT YOUR WORLD.</span>
           </h1>
 
-          <p className="hero-lead">
-            <em>“Total eradication for peace of mind. Opulent fragrances for lasting impressions.”</em>
-            Certified CIB defense chemistry paired with European cold-air diffusion — safeguarding homes, commercial spaces, and luxury venues across Karimnagar.
+          <p className="billboard-lead">
+            Defense-grade, odorless pest eradication paired with European cold-air ambient fragrance misting — creating safe, hygienic, and unforgettable sanctuaries across Karimnagar.
           </p>
-        </div>
 
-        {/* ── SNACKZMEDIA DUAL DIVISION SWITCHER TABS ── */}
+          {/* 3 Balanced Dual-Division Trust Badges */}
+          <div className="billboard-trust-row">
+            <div className="trust-badge-item">
+              <div className="trust-badge-circle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e11d48" strokeWidth="2.2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div className="trust-badge-copy">
+                <strong>100% Eco-Safe</strong>
+                <small>CIB Approved Chemistry</small>
+              </div>
+            </div>
+
+            <div className="trust-badge-item">
+              <div className="trust-badge-circle trust-badge-circle--gold">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2.2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <div className="trust-badge-copy">
+                <strong>8-Hr Cold Scent</strong>
+                <small>50+ Imported Essences</small>
+              </div>
+            </div>
+
+            <div className="trust-badge-item">
+              <div className="trust-badge-circle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e11d48" strokeWidth="2.2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="trust-badge-copy">
+                <strong>2-Hour Dispatch</strong>
+                <small>Karimnagar Response</small>
+              </div>
+            </div>
+          </div>
+
+          {/* Action CTAs */}
+          <div className="billboard-action-row">
+            <button className="billboard-btn-primary" onClick={() => handleScroll('#contact')}>
+              BOOK FREE CONSULTATION
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <a href="tel:+919381678805" className="billboard-btn-call">
+              📞 +91 93816 78805
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ── SNACKZMEDIA DUAL DIVISION SWITCHER TABS ── */}
         <div className="hero-snackz-tabs">
           <button
             className={`snackz-tab ${activeDivision === 'pest' ? 'active active-pest' : ''}`}
