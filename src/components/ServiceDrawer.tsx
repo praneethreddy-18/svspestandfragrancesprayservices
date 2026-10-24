@@ -7,9 +7,11 @@ interface ServiceDrawerProps {
   onClose: () => void;
 }
 
+type PropertySize = '1bhk' | '2bhk' | '3bhk' | 'villa' | 'corporate';
+
 export default function ServiceDrawer({ catalog, onClose }: ServiceDrawerProps) {
   const [activeTab, setActiveTab] = useState<number>(0);
-  const [selectedPropertySize, setSelectedPropertySize] = useState<'1bhk' | '2bhk' | '3bhk' | 'villa' | 'corporate'>('2bhk');
+  const [selectedPropertySize, setSelectedPropertySize] = useState<PropertySize>('2bhk');
   const [selectedScentTier, setSelectedScentTier] = useState<string>('Oud / Arabian Luxury');
 
   if (!catalog) return null;
@@ -17,7 +19,7 @@ export default function ServiceDrawer({ catalog, onClose }: ServiceDrawerProps) 
   const activePage = catalog.pages[activeTab];
 
   // Service estimation presets
-  const pestCalculations: Record<string, { label: string; est: string; warranty: string }> = {
+  const pestCalculations: Record<PropertySize, { label: string; est: string; warranty: string }> = {
     '1bhk': { label: '1 BHK Apartment (< 800 sq ft)', est: 'Free On-Site Inspection', warranty: '1 Year Maintenance AMC' },
     '2bhk': { label: '2 BHK Apartment (800 - 1300 sq ft)', est: 'Free On-Site Inspection', warranty: '1 Year Maintenance AMC' },
     '3bhk': { label: '3 BHK / Duplex (1300 - 2200 sq ft)', est: 'Free On-Site Inspection', warranty: 'Up to 5-Year Termite Option' },
@@ -115,7 +117,7 @@ export default function ServiceDrawer({ catalog, onClose }: ServiceDrawerProps) 
             {catalog.id === 'pest' ? (
               <div className="calc-controls">
                 <div className="calc-pill-selector">
-                  {(Object.keys(pestCalculations) as Array<keyof typeof pestCalculations>).map((key) => (
+                  {(Object.keys(pestCalculations) as PropertySize[]).map((key) => (
                     <button
                       key={key}
                       className={`calc-pill ${selectedPropertySize === key ? 'active' : ''}`}
