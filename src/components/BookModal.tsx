@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, type CSSProperties } from 'react';
 import './BookModal.css';
 import type { BookCatalog } from './BookCatalogData';
 import { playPageTurnSound } from './soundUtils';
@@ -92,7 +92,7 @@ export default function BookModal({ catalog, onClose }: BookModalProps) {
       <div
         className="book-modal-container"
         onClick={(e) => e.stopPropagation()}
-        style={{ '--book-theme': catalog.themeColor } as React.CSSProperties}
+        style={{ '--book-theme': catalog.themeColor } as CSSProperties}
       >
         {/* Top Header / Bar */}
         <div className="book-modal-header">

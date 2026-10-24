@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import './ServiceDrawer.css';
 import type { BookCatalog } from './BookCatalogData';
 
@@ -55,7 +55,7 @@ export default function ServiceDrawer({ catalog, onClose }: ServiceDrawerProps) 
       <div
         className="drawer-panel"
         onClick={(e) => e.stopPropagation()}
-        style={{ '--drawer-theme': catalog.themeColor } as React.CSSProperties}
+        style={{ '--drawer-theme': catalog.themeColor } as CSSProperties}
       >
         {/* Drawer Header Bar */}
         <div className="drawer-header">

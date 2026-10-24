@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import './Testimonials.css';
 
 const TESTIMONIALS = [
@@ -56,7 +57,7 @@ export default function Testimonials() {
               key={t.id}
               id={t.id}
               className="glass-card testimonial-card"
-              style={{ animationDelay: `${i * 0.1}s` } as React.CSSProperties}
+              style={{ animationDelay: `${i * 0.1}s` } as CSSProperties}
             >
               {/* Stars */}
               <div className="testimonial-card__stars" aria-label={`${t.rating} stars`}>

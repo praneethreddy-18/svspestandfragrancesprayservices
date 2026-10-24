@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, type ReactNode, type CSSProperties } from 'react';
 import './Services.css';
 
 interface ServiceItem {
@@ -7,7 +7,7 @@ interface ServiceItem {
   divisionBadge: string;
   divisionColor: string;
   image: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   desc: string;
   features: string[];
@@ -164,7 +164,7 @@ const SERVICES: ServiceItem[] = [
 ];
 
 export default function Services() {
-  const [filter, setFilter] = React.useState<'all' | 'pest' | 'fragrance'>('all');
+  const [filter, setFilter] = useState<'all' | 'pest' | 'fragrance'>('all');
 
   const filteredServices = SERVICES.filter(
     s => filter === 'all' || s.division === filter
@@ -254,7 +254,7 @@ export default function Services() {
                 </div>
                 <div
                   className="service-card__icon-float"
-                  style={{ '--svc-color': svc.color } as React.CSSProperties}
+                  style={{ '--svc-color': svc.color } as CSSProperties}
                 >
                   {svc.icon}
                 </div>

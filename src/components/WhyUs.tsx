@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import './WhyUs.css';
 
 
@@ -66,7 +67,7 @@ export default function WhyUs() {
 
         <div className="whyus-grid">
           {REASONS.map((r, i) => (
-            <div key={r.id} id={`reason-${r.id}`} className="whyus-card glass-card" style={{ animationDelay: `${i * 0.08}s` } as React.CSSProperties}>
+            <div key={r.id} id={`reason-${r.id}`} className="whyus-card glass-card" style={{ animationDelay: `${i * 0.08}s` } as CSSProperties}>
               <div className="whyus-card__emoji">{r.icon}</div>
               <h3 className="whyus-card__title">{r.title}</h3>
               <p className="whyus-card__desc">{r.desc}</p>
