@@ -240,7 +240,7 @@ export default function Hero() {
           </h1>
 
           <p className="hero-lead">
-            <em>“Total eradication for peace of mind. Opulent fragrances for lasting impressions.”</em>  
+            <em>“Total eradication for peace of mind. Opulent fragrances for lasting impressions.”</em>
             Certified CIB defense chemistry paired with European cold-air diffusion — safeguarding homes, commercial spaces, and luxury venues across Karimnagar.
           </p>
         </div>

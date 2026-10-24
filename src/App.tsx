@@ -5,29 +5,44 @@ import Services from './components/Services';
 import WhyUs from './components/WhyUs';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import FloatingActionPill from './components/FloatingActionPill';
 import './index.css';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const currentScroll = window.scrollY;
       if (totalScroll > 0) {
         setScrollProgress((currentScroll / totalScroll) * 100);
       }
+
+      // Track scroll direction on body for directional animations
+      if (currentScroll > lastScrollY && currentScroll > 80) {
+        document.body.classList.add('scrolling-down');
+        document.body.classList.remove('scrolling-up');
+      } else if (currentScroll < lastScrollY) {
+        document.body.classList.add('scrolling-up');
+        document.body.classList.remove('scrolling-down');
+      }
+      lastScrollY = currentScroll;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Dynamic Scroll Reveal with IntersectionObserver
+    // Smooth Scroll Reveal: Once an element comes into view, keep it 100% visible and vivid
     const observerCallback: IntersectionObserverCallback = (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          // Once revealed, unobserve to retain high performance
+          entry.target.classList.remove('is-hidden', 'is-hidden-above');
+          // Once revealed, keep it permanently solid so it NEVER fades to black when scrolling up or down
           observer.unobserve(entry.target);
         }
       });
@@ -35,18 +50,17 @@ function App() {
 
     const observer = new IntersectionObserver(observerCallback, {
       root: null,
-      rootMargin: '0px 0px -60px 0px',
-      threshold: 0.12,
+      rootMargin: '-30px 0px -50px 0px',
+      threshold: [0.08, 0.2],
     });
 
-    // Auto-attach to all cards, sections, steps and testimonials
+    // Auto-attach to all cards, sections, steps, FAQ, and testimonials
     const targets = document.querySelectorAll(
-      '.service-card, .rate-card, .whyus-card, .process-step, .testimonial-card, .contact-info, .contact-form-wrap, .section-title, .section-subtitle, .division-showcase'
+      '.service-card, .rate-card, .whyus-card, .process-step, .testimonial-card, .contact-info, .contact-form-wrap, .section-title, .section-subtitle, .division-showcase, .faq-card, .faq-localities-block'
     );
     targets.forEach((el, index) => {
       el.classList.add('reveal-on-scroll');
-      // Gentle staggered animation pacing for relaxed reveal
-      (el as HTMLElement).style.transitionDelay = `${(index % 4) * 0.18}s`;
+      (el as HTMLElement).style.transitionDelay = `${(index % 3) * 0.12}s`;
       observer.observe(el);
     });
 
@@ -70,9 +84,11 @@ function App() {
         <Services />
         <WhyUs />
         <Testimonials />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
+      <FloatingActionPill />
     </>
   );
 }

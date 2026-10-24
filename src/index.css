@@ -7,44 +7,58 @@
 
 :root {
   /* ── Deep Obsidian & Charcoal Backgrounds ── */
-  --bg-main:       #08090d; /* Ultra sleek dark obsidian */
-  --bg-subtle:     #0f1118;
-  --bg-card:       #131620;
+  --bg-main: #08090d;
+  /* Ultra sleek dark obsidian */
+  --bg-subtle: #0f1118;
+  --bg-card: #131620;
   --bg-card-hover: #1a1e2c;
-  --bg-glass:      rgba(19, 22, 32, 0.85);
+  --bg-glass: rgba(19, 22, 32, 0.85);
 
   /* ── SVS Logo Reds ── */
-  --svs-red:       #e11d48; /* Vibrant crimson from logo */
-  --svs-red-dark:  #be123c;
-  --svs-red-glow:  rgba(225, 29, 72, 0.35);
+  --svs-red: #e11d48;
+  /* Vibrant crimson from logo */
+  --svs-red-dark: #be123c;
+  --svs-red-glow: rgba(225, 29, 72, 0.35);
   --svs-red-light: rgba(225, 29, 72, 0.12);
-  --svs-red-border:rgba(225, 29, 72, 0.3);
+  --svs-red-border: rgba(225, 29, 72, 0.3);
 
   /* ── Text Hierarchy (High Contrast Clean) ── */
-  --text-main:     #ffffff;
-  --text-muted:    #94a3b8;
-  --text-dim:      #64748b;
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
 
   /* ── Borders & Outlines ── */
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-card:   rgba(255, 255, 255, 0.1);
-  --border-hover:  rgba(255, 255, 255, 0.2);
+  --border-card: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.2);
 
   /* ── Shadows ── */
-  --shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.5);
-  --shadow-md:     0 8px 24px rgba(0, 0, 0, 0.7);
-  --shadow-lg:     0 16px 48px rgba(0, 0, 0, 0.85);
-  --shadow-red:    0 8px 30px rgba(225, 29, 72, 0.45);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.85);
+  --shadow-red: 0 8px 30px rgba(225, 29, 72, 0.45);
 
   /* ── Typography & Motion ── */
-  --font-body:     'Plus Jakarta Sans', sans-serif;
-  --font-head:     'Outfit', sans-serif;
-  --ease:          all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-head: 'Outfit', sans-serif;
+  --ease: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; color-scheme: dark; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: dark;
+}
+
 body {
   font-family: var(--font-body);
   background: var(--bg-main);
@@ -55,13 +69,22 @@ body {
 }
 
 /* ── Custom Dark Scrollbar ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #08090d; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08090d;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #1e2433;
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--svs-red); }
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--svs-red);
+}
 
 /* ── Top Scroll Reading Progress Indicator ── */
 .scroll-progress-bar {
@@ -86,14 +109,29 @@ body {
 }
 
 /* ── Headings ── */
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: var(--font-head);
   color: #ffffff;
   line-height: 1.15;
 }
-a { text-decoration: none; color: inherit; }
-img { max-width: 100%; display: block; }
-button { font-family: var(--font-body); }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--font-body);
+}
 
 /* ── Container ── */
 .container {
@@ -118,6 +156,7 @@ button { font-family: var(--font-body); }
   letter-spacing: 1.5px;
   margin-bottom: 18px;
 }
+
 .section-tag .dot {
   width: 7px;
   height: 7px;
@@ -135,16 +174,19 @@ button { font-family: var(--font-body); }
   letter-spacing: -0.8px;
   line-height: 1.15;
 }
+
 .section-title span:nth-of-type(1) {
   background: linear-gradient(135deg, #ff4d79 0%, #e11d48 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 .section-title span:nth-of-type(2) {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
 }
+
 .section-subtitle {
   font-size: 1.05rem;
   color: var(--text-muted);
@@ -172,6 +214,7 @@ button { font-family: var(--font-body); }
   position: relative;
   overflow: hidden;
 }
+
 .btn-primary::after {
   content: '';
   position: absolute;
@@ -183,6 +226,7 @@ button { font-family: var(--font-body); }
   transform: rotate(30deg);
   animation: btnShimmer 3.5s infinite;
 }
+
 .btn-primary:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 8px 30px rgba(225, 29, 72, 0.7);
@@ -204,6 +248,7 @@ button { font-family: var(--font-body); }
   cursor: pointer;
   transition: all 0.25s ease;
 }
+
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.3);
@@ -216,38 +261,60 @@ button { font-family: var(--font-body); }
 
 /* ── Shimmer & Glint Keyframes ── */
 @keyframes btnShimmer {
-  0% { transform: translateX(-150%) rotate(30deg); }
-  30%, 100% { transform: translateX(150%) rotate(30deg); }
+  0% {
+    transform: translateX(-150%) rotate(30deg);
+  }
+
+  30%,
+  100% {
+    transform: translateX(150%) rotate(30deg);
+  }
 }
 
 @keyframes floatSlow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(0.5deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
 }
 
 @keyframes pulseGlowRed {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(225, 29, 72, 0.3), inset 0 0 15px rgba(225, 29, 72, 0.1);
   }
+
   50% {
     box-shadow: 0 0 35px rgba(225, 29, 72, 0.6), inset 0 0 25px rgba(225, 29, 72, 0.25);
   }
 }
 
 @keyframes pulseGlowGold {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(217, 119, 6, 0.3), inset 0 0 15px rgba(217, 119, 6, 0.1);
   }
+
   50% {
     box-shadow: 0 0 35px rgba(217, 119, 6, 0.6), inset 0 0 25px rgba(217, 119, 6, 0.25);
   }
 }
 
 @keyframes orbBreathe {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1) translate(-50%, 0);
     opacity: 0.45;
   }
+
   50% {
     transform: scale(1.15) translate(-48%, 15px);
     opacity: 0.75;
@@ -255,14 +322,29 @@ button { font-family: var(--font-body); }
 }
 
 @keyframes badgeGlow {
-  0%, 100% { box-shadow: 0 0 10px rgba(225, 29, 72, 0.4); }
-  50% { box-shadow: 0 0 22px rgba(225, 29, 72, 0.8); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgba(225, 29, 72, 0.8);
+  }
 }
 
 @keyframes textGradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ── Animated Floating Badges & Cards ── */
@@ -277,8 +359,8 @@ button { font-family: var(--font-body); }
 /* ── Smooth Interactive Hover Transitions ── */
 .rate-card {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .rate-card:hover {
@@ -287,8 +369,8 @@ button { font-family: var(--font-body); }
 
 .service-card {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .service-card:hover {
@@ -297,8 +379,8 @@ button { font-family: var(--font-body); }
 
 .whyus-card {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .whyus-card:hover {
@@ -315,53 +397,72 @@ button { font-family: var(--font-body); }
     opacity: 0;
     transform: translateY(22px) scale(0.985);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-/* ── Dynamic Scroll Animations (IntersectionObserver - Luxurious Slow Motion) ── */
+/* ── Dynamic Scroll Animations (IntersectionObserver - Bidirectional Up & Down) ── */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(48px) scale(0.96);
-  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.5s ease,
-              border-color 0.5s ease;
+  transform: translateY(42px) scale(0.97);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
   will-change: opacity, transform;
 }
 
+/* Entering into viewport (scrolling down or scrolling up) */
 .reveal-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-/* Slide in from alternating gentle angles for grid cards */
+/* Exit downwards (when scrolling up past it) */
+.reveal-on-scroll.is-hidden {
+  opacity: 0;
+  transform: translateY(38px) scale(0.97);
+}
+
+/* Exit upwards (when scrolling down past it) */
+.reveal-on-scroll.is-hidden-above {
+  opacity: 0.15;
+  transform: translateY(-28px) scale(0.985);
+}
+
+/* Slide in from alternating gentle offsets for service grid cards */
 .service-card.reveal-on-scroll:nth-child(even) {
-  transform: translateY(54px) scale(0.95);
+  transform: translateY(46px) scale(0.96);
 }
+
 .service-card.reveal-on-scroll:nth-child(odd) {
-  transform: translateY(42px) scale(0.95);
+  transform: translateY(38px) scale(0.96);
 }
+
 .service-card.reveal-on-scroll.is-visible {
   transform: translateY(0) scale(1);
 }
 
-/* Luxurious slow ambient bloom on reveal */
+/* Ambient glow subtle pulse when appearing in view */
 .service-card.reveal-on-scroll.is-visible,
 .whyus-card.reveal-on-scroll.is-visible,
-.testimonial-card.reveal-on-scroll.is-visible {
-  animation: scrollRevealPop 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+.testimonial-card.reveal-on-scroll.is-visible,
+.faq-item.reveal-on-scroll.is-visible {
+  animation: scrollRevealPop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes scrollRevealPop {
   0% {
-    filter: brightness(0.85);
+    filter: brightness(0.9);
   }
+
   50% {
-    filter: brightness(1.06);
+    filter: brightness(1.05);
   }
+
   100% {
     filter: brightness(1);
   }
@@ -372,6 +473,7 @@ button { font-family: var(--font-body); }
   .container {
     padding: 0 20px;
   }
+
   .section-title {
     font-size: 2.4rem;
   }
@@ -381,13 +483,16 @@ button { font-family: var(--font-body); }
   .container {
     padding: 0 16px;
   }
+
   .section-title {
     font-size: 2rem;
     letter-spacing: -0.5px;
   }
+
   .section-subtitle {
     font-size: 0.95rem;
   }
+
   .section-tag {
     font-size: 0.68rem;
     padding: 5px 14px;
@@ -398,16 +503,19 @@ button { font-family: var(--font-body); }
   html {
     font-size: 15px;
   }
+
   .container {
     padding: 0 14px;
   }
+
   .section-title {
     font-size: 1.7rem;
     line-height: 1.2;
   }
-  .btn-primary, .btn-secondary {
+
+  .btn-primary,
+  .btn-secondary {
     padding: 11px 18px;
     font-size: 0.88rem;
   }
 }
-
