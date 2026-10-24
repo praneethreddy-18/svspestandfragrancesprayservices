@@ -16,9 +16,9 @@ const REASONS = [
   },
   {
     id: 'experienced',
-    icon: '⏱️',
-    title: '15+ Years Experience',
-    desc: 'Over a decade of solving pest problems across Hyderabad and surrounding areas.',
+    icon: '🎯',
+    title: 'Certified Specialists',
+    desc: 'Government-certified, extensively trained technicians equipped with modern precision tools.',
   },
   {
     id: 'quick-response',

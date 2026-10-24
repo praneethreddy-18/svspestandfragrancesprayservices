@@ -4,7 +4,7 @@ const TESTIMONIALS = [
   {
     id: 'test-1',
     name: 'Ramesh Kumar',
-    role: 'Homeowner, Hyderabad',
+    role: 'Homeowner, Karimnagar',
     avatar: '👨‍💼',
     rating: 5,
     text: 'SVS Pest Services did an excellent job! They got rid of the cockroach problem in our kitchen within a single visit. Very professional team and eco-safe products — safe for our kids.',
@@ -12,7 +12,7 @@ const TESTIMONIALS = [
   {
     id: 'test-2',
     name: 'Priya Sharma',
-    role: 'Business Owner, Secunderabad',
+    role: 'Business Owner, Mukarampura, Karimnagar',
     avatar: '👩‍💼',
     rating: 5,
     text: 'We had a severe termite issue in our office building. The SVS team handled it efficiently with minimal disruption. The 5-year warranty gave us real peace of mind.',
@@ -20,7 +20,7 @@ const TESTIMONIALS = [
   {
     id: 'test-3',
     name: 'Suresh Reddy',
-    role: 'Apartment Resident, Kukatpally',
+    role: 'Apartment Resident, Collectorate Road, Karimnagar',
     avatar: '🧑‍💼',
     rating: 5,
     text: 'Their fragrance spray service is absolutely amazing. The scent lasts for weeks and the variety of options is impressive. Highly recommend their combo packages!',
@@ -28,7 +28,7 @@ const TESTIMONIALS = [
   {
     id: 'test-4',
     name: 'Lakshmi Naidu',
-    role: 'Restaurateur, Banjara Hills',
+    role: 'Restaurateur, Jyothinagar, Karimnagar',
     avatar: '👩‍🍳',
     rating: 5,
     text: 'Running a restaurant, pest-free certification is critical for us. SVS has been our trusted partner for 3 years. Prompt, reliable, and affordable — 10/10!',
@@ -43,10 +43,10 @@ export default function Testimonials() {
         <div className="testimonials-section__header">
           <div className="section-tag"><span className="dot" />Testimonials</div>
           <h2 className="section-title">
-            Trusted by <span>5,000+ Customers</span> Across Hyderabad
+            Loved by <span>Homes & Businesses</span> Across Karimnagar
           </h2>
           <p className="section-subtitle">
-            Real stories from real customers — here's what they say about our service quality and results.
+            Real feedback from local residents and business owners experiencing our modern pest & fragrance services.
           </p>
         </div>
 

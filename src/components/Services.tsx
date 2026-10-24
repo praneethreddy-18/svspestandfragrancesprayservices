@@ -1,135 +1,313 @@
+import React from 'react';
 import './Services.css';
 
-const SERVICES = [
+interface ServiceItem {
+  id: string;
+  division: 'pest' | 'fragrance';
+  divisionBadge: string;
+  divisionColor: string;
+  image: string;
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  features: string[];
+  pricing: string;
+  warranty?: string;
+  color: string;
+}
+
+const SERVICES: ServiceItem[] = [
   {
-    id: 'pest-control',
+    id: 'termite-defense',
+    division: 'pest',
+    divisionBadge: 'Defense Grade',
+    divisionColor: '#e11d48',
+    image: '/termite_svc.jpg',
     icon: (
-      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
-    title: 'General Pest Control',
-    desc: 'Comprehensive treatment for cockroaches, ants, spiders, bedbugs, and common household pests using eco-safe chemicals.',
-    features: ['Cockroaches & Ants', 'Bedbugs & Fleas', 'Spiders & Mites', 'Eco-safe chemicals'],
-    color: '#2ecc71',
+    title: 'Pre & Post Termite Treatment',
+    desc: 'Subterranean termite chemical barrier with drilling & pressure injection technology for foundations and woodwork.',
+    features: ['CIB-Approved Termiticide', 'Pressure Drilling & Misting', 'Hitech City & Gachibowli Protocol', 'Audit-Ready Certificate'],
+    pricing: 'Free On-Site Inspection',
+    warranty: 'Up to 10-Year Warranty',
+    color: '#e11d48',
   },
   {
-    id: 'termite-control',
+    id: 'cockroach-baiting',
+    division: 'pest',
+    divisionBadge: 'Safe Gel Tech',
+    divisionColor: '#e11d48',
+    image: '/cockroach_svc.jpg',
     icon: (
-      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
       </svg>
     ),
-    title: 'Termite Treatment',
-    desc: 'Advanced anti-termite solutions including soil treatment, wood treatment, and baiting systems to protect your property.',
-    features: ['Soil Treatment', 'Wood Treatment', 'Baiting Systems', '5-Year Warranty'],
-    color: '#f0c040',
+    title: 'Cockroach Eradication & IGR',
+    desc: 'German and American cockroach elimination using odourless dot-gel baiting and Insect Growth Regulators (IGR).',
+    features: ['No Need to Empty Kitchen', '100% Odourless & Safe', 'Targets Nest Cascades', 'Follow-up Guarantee'],
+    pricing: 'Custom Tailored Quote',
+    warranty: '100% Eradication Guarantee',
+    color: '#ff4d79',
+  },
+  {
+    id: 'bedbug-thermal',
+    division: 'pest',
+    divisionBadge: 'Single Visit',
+    divisionColor: '#e11d48',
+    image: '/bedbug_svc.jpg',
+    icon: (
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+      </svg>
+    ),
+    title: 'Bedbug Elimination & Eradication',
+    desc: 'High-temperature steam and targeted contact treatments that eliminate adult bedbugs, nymphs, and hidden eggs.',
+    features: ['Crack & Crevice Infusion', 'Mattress & Headboard Safe', 'Rapid Egg Neutralization', 'Residential & Hotel Suites'],
+    pricing: 'Written Guarantee Quote',
+    warranty: 'Service Warranty Included',
+    color: '#f43f5e',
   },
   {
     id: 'rodent-control',
+    division: 'pest',
+    divisionBadge: 'Scientific Proofing',
+    divisionColor: '#e11d48',
+    image: '/rodent_svc.jpg',
     icon: (
-      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
       </svg>
     ),
-    title: 'Rodent Control',
-    desc: 'Effective rodent management through trapping, exclusion, and sanitation for rats and mice infestations.',
-    features: ['Live Trapping', 'Exclusion Sealing', 'Sanitation Tips', 'Follow-up Visits'],
-    color: '#e74c3c',
+    title: 'Scientific Rodent Control & Proofing',
+    desc: 'Tamper-resistant bait stations, runway trapping, glue boards, and structural entry point exclusion.',
+    features: ['Tamper-Resistant Stations', 'Structural Hole Exclusion', 'Prevents Wire Gnawing', 'Audit-Ready Docs'],
+    pricing: 'Site Assessment Quote',
+    warranty: 'Guaranteed Containment',
+    color: '#e11d48',
   },
   {
-    id: 'mosquito-control',
+    id: 'mosquito-fogging',
+    division: 'pest',
+    divisionBadge: 'Vector Defense',
+    divisionColor: '#e11d48',
+    image: '/mosquito_svc.jpg',
     icon: (
-      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" />
       </svg>
     ),
-    title: 'Mosquito & Fly Control',
-    desc: 'Targeted fogging and larvicidal treatments to eliminate mosquito breeding zones and protect against vector-borne diseases.',
-    features: ['ULV Fogging', 'Larvicidal Treatment', 'Breeding Zone Removal', 'Safe for Children'],
-    color: '#3498db',
+    title: 'Mosquito ULV Fogging & Larviciding',
+    desc: 'Integrated mosquito control combining organic larviciding and thermal fogging during seasonal spikes.',
+    features: ['Dengue/Malaria Prevention', 'Organic Water Treatment', 'Thermal & Cold Fogging', 'Villas & Gated Societies'],
+    pricing: 'Area-Based Inspection',
+    warranty: 'Immediate Adulticide Impact',
+    color: '#ff4d79',
   },
   {
-    id: 'fragrance-spray',
+    id: 'woodborer-disinfection',
+    division: 'pest',
+    divisionBadge: 'Hospital Grade',
+    divisionColor: '#059669',
+    image: '/disinfection_svc.jpg',
     icon: (
-      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
       </svg>
     ),
-    title: 'Fragrance Spray Service',
-    desc: 'Premium aromatic spray services for homes, offices, and events. Long-lasting freshness with curated fragrance collections.',
-    features: ['100+ Fragrance Options', 'Long-Lasting Formula', 'Event & Home Packages', 'Custom Schedules'],
-    color: '#9b59b6',
+    title: 'Wood Borer Injection & Disinfection',
+    desc: 'Hospital-grade broad spectrum antimicrobial misting, syringe treatment for antique timber, and emergency wildlife removal.',
+    features: ['Antimicrobial Fogging', 'Wood Borer Syringe Tech', '24/7 Snake/Lizard Rescue', 'NABH / HACCP Standards'],
+    pricing: 'Complimentary Assessment',
+    warranty: 'Hospital Grade Certified',
+    color: '#10b981',
   },
   {
-    id: 'disinfection',
+    id: 'cold-air-fragrance',
+    division: 'fragrance',
+    divisionBadge: '8-Hour Formula',
+    divisionColor: '#d97706',
+    image: '/fragrance_hd.jpg',
     icon: (
-      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
       </svg>
     ),
-    title: 'Sanitization & Disinfection',
-    desc: 'Professional deep sanitization services for residential and commercial spaces using hospital-grade disinfectants.',
-    features: ['Hospital-Grade Products', 'Post-COVID Certified', 'Office & Home', 'Same-Day Service'],
-    color: '#1abc9c',
+    title: 'Cold-Air Aroma Diffuser System',
+    desc: 'Transforms pure fragrance oils into sub-micron dry mist that remains airborne for 8 continuous hours without heat or smoke.',
+    features: ['Up to 5,000 Sq. Ft. Per Unit', 'No Burning, Zero Residue', 'Acoustically Silent', 'Hotel Lobbies & Banquets'],
+    pricing: 'Turnkey 8-Hour Session',
+    warranty: 'Continuous 8-Hr Output',
+    color: '#d97706',
+  },
+  {
+    id: 'luxury-scent-collections',
+    division: 'fragrance',
+    divisionBadge: '50+ European Scents',
+    divisionColor: '#d97706',
+    image: '/fragrance_hd.jpg',
+    icon: (
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+      </svg>
+    ),
+    title: 'Luxury Fragrance Scenting',
+    desc: 'Imported Swiss and French essential oils complying with IFRA Geneva. Royal Oud, Velvet Mogra, Amber & Cedarwood.',
+    features: ['100% Pure Aroma Oils', 'No Alcohol Dilution', 'Custom Signature Blends', 'Luxury Events & Weddings'],
+    pricing: 'Tailored Event Packages',
+    warranty: 'IFRA Geneva Certified',
+    color: '#f59e0b',
   },
 ];
 
 export default function Services() {
+  const [filter, setFilter] = React.useState<'all' | 'pest' | 'fragrance'>('all');
+
+  const filteredServices = SERVICES.filter(
+    s => filter === 'all' || s.division === filter
+  );
+
+  const handleBooking = (title: string) => {
+    const contactSection = document.querySelector('#contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+      // pre-fill service dropdown if input exists
+      const selectEl = document.querySelector('#service') as HTMLSelectElement | null;
+      if (selectEl) {
+        if (title.includes('Termite')) selectEl.value = 'Termite Treatment';
+        else if (title.includes('Rodent')) selectEl.value = 'Rodent Control';
+        else if (title.includes('Mosquito')) selectEl.value = 'Mosquito & Fly Control';
+        else if (title.includes('Disinfection') || title.includes('Sanitization')) selectEl.value = 'Sanitization & Disinfection';
+        else if (title.includes('Fragrance') || title.includes('Aroma')) selectEl.value = 'Fragrance Spray Service';
+        else selectEl.value = 'General Pest Control';
+
+        // Trigger change event so React form state updates
+        selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+  };
+
   return (
     <section id="services" className="services-section">
-      {/* Decorative bg glow */}
-      <div className="services-section__glow" aria-hidden="true" />
+      <div className="services-bg-mesh" aria-hidden="true" />
 
       <div className="container">
+        {/* Section Header with division tabs */}
         <div className="services-section__header">
-          <div className="section-tag">
+          <div className="section-tag section-tag--glow">
             <span className="dot" />
-            Our Services
+            Dual Division Portfolio
           </div>
           <h2 className="section-title">
-            Everything You Need for a <span>Pest-Free, Fresh</span> Space
+            Engineered For <span>Absolute Protection</span> & <span>Opulent Atmosphere</span>
           </h2>
           <p className="section-subtitle">
-            From targeted pest elimination to luxurious fragrance solutions — we cover every corner of your home and workplace.
+            Defense-standard pest elimination and world-class 8-hour cold-air sensory ambient scenting — delivering uncompromising hygiene and elegance.
           </p>
+
+          {/* Interactive Division Filter Tabs */}
+          <div className="services-filter-tabs">
+            <button
+              className={`filter-tab ${filter === 'all' ? 'active' : ''}`}
+              onClick={() => setFilter('all')}
+            >
+              All Services ({SERVICES.length})
+            </button>
+            <button
+              className={`filter-tab filter-tab--pest ${filter === 'pest' ? 'active' : ''}`}
+              onClick={() => setFilter('pest')}
+            >
+              🛡️ Pest Control Division
+            </button>
+            <button
+              className={`filter-tab filter-tab--fragrance ${filter === 'fragrance' ? 'active' : ''}`}
+              onClick={() => setFilter('fragrance')}
+            >
+              ✨ Fragrance Spray Division
+            </button>
+          </div>
         </div>
 
+        {/* Enhanced Glassmorphic Service Cards Grid */}
         <div className="services-grid" role="list">
-          {SERVICES.map((svc, i) => (
+          {filteredServices.map((svc) => (
             <article
               key={svc.id}
               id={`service-card-${svc.id}`}
-              className="glass-card service-card"
+              className={`service-card service-card--glass service-card--${svc.division}`}
               role="listitem"
-              style={{ animationDelay: `${i * 0.07}s` } as React.CSSProperties}
             >
-              <div className="service-card__icon" style={{ '--svc-color': svc.color } as React.CSSProperties}>
-                {svc.icon}
-              </div>
-              <h3 className="service-card__title">{svc.title}</h3>
-              <p className="service-card__desc">{svc.desc}</p>
-              <ul className="service-card__features">
-                {svc.features.map(f => (
-                  <li key={f} className="service-card__feature">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <div className="service-card__footer">
-                <button
-                  id={`book-${svc.id}`}
-                  className="service-card__btn"
-                  onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              {/* Card Header Media with Glass Overlay */}
+              <div className="service-card__media">
+                <img
+                  src={svc.image}
+                  alt={svc.title}
+                  className="service-card__img"
+                  loading="lazy"
+                />
+                <div className="service-card__media-glass" />
+                <div className="service-card__media-badge" style={{ borderColor: svc.divisionColor }}>
+                  {svc.divisionBadge}
+                </div>
+                <div
+                  className="service-card__icon-float"
+                  style={{ '--svc-color': svc.color } as React.CSSProperties}
                 >
-                  Book Service
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </button>
+                  {svc.icon}
+                </div>
+              </div>
+
+              <div className="service-card__body">
+                <h3 className="service-card__title">{svc.title}</h3>
+                <p className="service-card__desc">{svc.desc}</p>
+
+                {/* Price & Guarantee Pill */}
+                <div className="service-card__metrics">
+                  <div className="metric-tag">
+                    <span className="metric-label">Pricing</span>
+                    <span className="metric-value">{svc.pricing}</span>
+                  </div>
+                  {svc.warranty && (
+                    <div className="metric-tag metric-tag--warranty">
+                      <span className="metric-label">Guarantee</span>
+                      <span className="metric-value">{svc.warranty}</span>
+                    </div>
+                  )}
+                </div>
+
+                <ul className="service-card__features">
+                  {svc.features.map(f => (
+                    <li key={f} className="service-card__feature">
+                      <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="service-card__footer">
+                  <button
+                    id={`book-${svc.id}`}
+                    className="service-card__btn"
+                    onClick={() => handleBooking(svc.title)}
+                  >
+                    Schedule Service
+                    <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                  <a
+                    href={`https://wa.me/919381678805?text=${encodeURIComponent(`Hello SVS Pest Control & Fragrance Services, I would like to book or inquire about *${svc.title}*.`)}`}
+                    className="service-card__wa-btn"
+                    title="WhatsApp Inquiry"
+                  >
+                    💬
+                  </a>
+                </div>
               </div>
             </article>
           ))}

@@ -11,6 +11,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.name || !form.phone) return;
     setSubmitted(true);
   };
 
@@ -30,10 +31,10 @@ export default function Contact() {
 
           <div className="contact-info__items">
             {[
-              { icon: '📞', label: 'Phone / WhatsApp', value: '+91 99999 99999', href: 'tel:+919999999999' },
-              { icon: '✉️', label: 'Email', value: 'info@svspestservices.com', href: 'mailto:info@svspestservices.com' },
-              { icon: '📍', label: 'Location', value: 'Hyderabad, Telangana', href: '#' },
-              { icon: '🕐', label: 'Working Hours', value: 'Mon–Sat: 8 AM – 8 PM', href: '#' },
+              { icon: '📞', label: 'Call / WhatsApp (24/7)', value: '+91 93816 78805', href: 'tel:+919381678805' },
+              { icon: '✉️', label: 'Official Email', value: 'svspestcontrolservice@gmail.com', href: 'mailto:svspestcontrolservice@gmail.com' },
+              { icon: '📍', label: 'Operating Hub', value: 'Karimnagar, Telangana', href: '#' },
+              { icon: '🕐', label: 'Service Availability', value: '24/7 Emergency & Same-Day Response', href: '#' },
             ].map(item => (
               <a key={item.label} href={item.href} className="contact-info__item" id={`contact-${item.label.toLowerCase().replace(/\s/g, '-')}`}>
                 <div className="contact-info__item-icon">{item.icon}</div>
@@ -53,9 +54,23 @@ export default function Contact() {
               <div className="contact-success__icon">✅</div>
               <h3>Booking Request Sent!</h3>
               <p>Thank you, <strong>{form.name}</strong>! Our team will call you at <strong>{form.phone}</strong> within 2 hours to confirm your appointment.</p>
-              <button className="btn-primary" style={{ marginTop: '20px' }} onClick={() => setSubmitted(false)}>
-                Send Another Request
-              </button>
+              
+              <div style={{ display: 'flex', gap: '12px', marginTop: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <button
+                  type="button"
+                  className="btn-primary"
+                  style={{ background: '#25D366', color: '#fff', boxShadow: '0 4px 18px rgba(37, 211, 102, 0.4)', cursor: 'pointer', border: 'none' }}
+                  onClick={() => {
+                    const waUrl = `https://wa.me/919381678805?text=${encodeURIComponent(`Hello SVS Pest Control, I submitted a booking request for *${form.service || 'Inspection'}*.\nName: ${form.name}\nPhone: ${form.phone}\nDetails: ${form.message || 'Please confirm earliest slot.'}`)}`;
+                    window.location.assign(waUrl);
+                  }}
+                >
+                  💬 Open in WhatsApp
+                </button>
+                <button className="btn-secondary" onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', service: '', message: '' }); }}>
+                  Send Another Request
+                </button>
+              </div>
             </div>
           ) : (
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
