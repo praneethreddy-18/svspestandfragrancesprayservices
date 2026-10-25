@@ -60,7 +60,7 @@ const PEST_CARDS: ServiceCardData[] = [
   {
     id: 'termite-treatment',
     image: '/svc_termite.jpg',
-    badge: '10-Yr Warranty',
+    badge: '05-Yr Warranty',
     tag: 'Termites',
     price: 'Free Inspection',
     title: 'Termite Treatment',
@@ -154,7 +154,7 @@ const PEST_CARDS: ServiceCardData[] = [
     tag: 'Commercial',
     price: 'Free Inspection',
     title: 'Commercial Pest Control',
-    desc: 'Maintain a clean, professional environment with pest management solutions for offices, retail spaces, restaurants, warehouses, and other commercial properties.',
+    desc: 'Maintain a clean, professional environment with pest management solutions for hospitals, hotels, offices, retail spaces, restaurants, warehouses, and other commercial properties.',
     features: [
       'HACCP, FSSAI & ISO regulatory audit documentation',
       'Discreet after-hours treatment schedules',
@@ -268,16 +268,14 @@ export default function Hero() {
   const [selectedTag, setSelectedTag] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [heroSlide, setHeroSlide] = useState<number>(0);
-  const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  // Auto-advance hero carousel every 6 seconds
+  // Auto-advance hero carousel continuously every 4.5 seconds
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
       setHeroSlide(prev => (prev === 0 ? 1 : 0));
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [isPaused]);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
@@ -347,11 +345,7 @@ export default function Hero() {
       <div className="hero-ambient-glow" />
 
       {/* ── FULLSCREEN HERO DUAL CAROUSEL BILLBOARD ── */}
-      <div
-        className="hero-billboard-wrap hero-billboard-fullscreen"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
+      <div className="hero-billboard-wrap hero-billboard-fullscreen">
         {/* ── SLIDE 1: PEST CONTROL HERO ── */}
         <div className={`hero-carousel-slide ${heroSlide === 0 ? 'slide--active' : ''}`}>
           <img
@@ -528,26 +522,20 @@ export default function Hero() {
           <ChevronRight size={24} strokeWidth={2.4} />
         </button>
 
-        {/* ── CAROUSEL BOTTOM PAGINATION TABS ── */}
-        <div className="hero-carousel-pagination">
+        {/* ── SLEEK MINIMAL DOT INDICATORS (NO TABS) ── */}
+        <div className="hero-carousel-dots">
           <button
             type="button"
-            className={`carousel-pag-btn ${heroSlide === 0 ? 'active' : ''}`}
+            className={`hero-carousel-dot ${heroSlide === 0 ? 'hero-carousel-dot--active' : ''}`}
             onClick={() => setHeroSlide(0)}
-          >
-            <span className="pag-num">01</span>
-            <span className="pag-text">Defense Pest Control</span>
-            <span className="pag-bar"><span className="pag-progress" /></span>
-          </button>
+            aria-label="Pest Control Slide"
+          />
           <button
             type="button"
-            className={`carousel-pag-btn ${heroSlide === 1 ? 'active active-gold' : ''}`}
+            className={`hero-carousel-dot ${heroSlide === 1 ? 'hero-carousel-dot--active' : ''}`}
             onClick={() => setHeroSlide(1)}
-          >
-            <span className="pag-num">02</span>
-            <span className="pag-text">Luxury Fragrance Scenting</span>
-            <span className="pag-bar"><span className="pag-progress" /></span>
-          </button>
+            aria-label="Luxury Fragrance Slide"
+          />
         </div>
       </div>
 
@@ -621,7 +609,7 @@ export default function Hero() {
                     <span className="metric-title">Govt Specialists</span>
                   </div>
                   <div className="metric-card">
-                    <span className="metric-number">10-Year</span>
+                    <span className="metric-number">05-Year</span>
                     <span className="metric-title">Termite Warranty</span>
                   </div>
                 </div>

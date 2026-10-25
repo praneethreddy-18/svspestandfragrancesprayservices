@@ -1,13 +1,8 @@
-import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
 import AnimatedCounter from './AnimatedCounter';
 import {
   Users,
-  Target,
   ShieldCheck,
-  Leaf,
-  Home,
-  Headset,
   Award,
   MapPin,
   CheckCircle2,
@@ -19,7 +14,8 @@ import './WhyUs.css';
 
 interface FeatureItem {
   id: string;
-  icon: ReactNode;
+  image: string;
+  badge: string;
   title: string;
   desc: string;
 }
@@ -27,37 +23,43 @@ interface FeatureItem {
 const WHY_US_FEATURES: FeatureItem[] = [
   {
     id: 'experienced-professionals',
-    icon: <Users size={26} color="#ED1C24" strokeWidth={2.4} />,
+    image: '/realistic_technician_clean.jpg',
+    badge: 'Certified Technicians',
     title: 'Experienced Professionals',
     desc: 'Our trained and certified technicians bring years of hands-on experience to every job.',
   },
   {
     id: 'effective-solutions',
-    icon: <Target size={26} color="#ED1C24" strokeWidth={2.4} />,
+    image: '/pest_control_hd.jpg',
+    badge: 'Proven Formulation',
     title: 'Effective Solutions',
     desc: 'We use proven methods and high-quality products to eliminate pests and help prevent them from returning.',
   },
   {
     id: 'safe-family-pets',
-    icon: <ShieldCheck size={26} color="#ED1C24" strokeWidth={2.4} />,
+    image: '/safe_family_pets.jpg',
+    badge: '100% Non-Toxic',
     title: 'Safe for Your Family & Pets',
     desc: 'We prioritize safety by using treatments that are effective and family-conscious.',
   },
   {
     id: 'eco-friendly',
-    icon: <Leaf size={26} color="#ED1C24" strokeWidth={2.4} />,
+    image: '/disinfection_svc.jpg',
+    badge: 'Govt Approved Care',
     title: 'Eco-Friendly Approach',
     desc: 'We choose environmentally responsible solutions whenever possible.',
   },
   {
     id: 'customized-plans',
-    icon: <Home size={26} color="#ED1C24" strokeWidth={2.4} />,
+    image: '/svc_residential.jpg',
+    badge: 'Custom Architecture',
     title: 'Customized Plans',
     desc: 'Every property is different. We provide tailored solutions based on your specific pest concerns and needs.',
   },
   {
     id: 'reliable-support',
-    icon: <Headset size={26} color="#ED1C24" strokeWidth={2.4} />,
+    image: '/faq_consultation.jpg',
+    badge: '24/7 Helpline',
     title: 'Reliable Support',
     desc: 'From your first inspection to follow-up visits, our team is here to answer questions and provide ongoing support.',
   },
@@ -66,7 +68,7 @@ const WHY_US_FEATURES: FeatureItem[] = [
 const TRUST_STATS = [
   {
     icon: <Users size={26} color="#ED1C24" strokeWidth={2.4} />,
-    value: '2,500+',
+    value: '100+',
     label: 'Happy Customers',
   },
   {
@@ -81,7 +83,7 @@ const TRUST_STATS = [
   },
   {
     icon: <MapPin size={26} color="#ED1C24" strokeWidth={2.4} />,
-    value: '50+',
+    value: '30+',
     label: 'Areas Served',
   },
 ];
@@ -193,8 +195,15 @@ export default function WhyUs() {
                 transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -8, transition: { type: 'spring', stiffness: 400, damping: 20 } }}
               >
-                <div className="feature-icon-circle">
-                  {item.icon}
+                <div className="feature-img-wrap">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="feature-card-img"
+                    loading="lazy"
+                  />
+                  <div className="feature-img-overlay" />
+                  <span className="feature-img-badge">{item.badge}</span>
                 </div>
                 <div className="feature-content">
                   <h3 className="feature-title">{item.title}</h3>

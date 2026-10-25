@@ -125,9 +125,7 @@ export default function EcoNatureBanner() {
             <span>Book Your Free Eco-Friendly Inspection</span>
             <ArrowRight size={18} />
           </motion.button>
-          <span className="eco-cta-note">
-            🛡️ 100% Written Warranty on All Termite &amp; Pest Elimination Treatments
-          </span>
+
         </div>
       </div>
 

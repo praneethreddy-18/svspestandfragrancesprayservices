@@ -370,98 +370,44 @@
   box-shadow: 0 0 20px rgba(237, 28, 36, 0.6);
 }
 
-/* Bottom Pagination Bar */
-.hero-carousel-pagination {
+/* Sleek Minimal Carousel Dots (Replaces bulky tabs) */
+.hero-carousel-dots {
   position: absolute;
-  bottom: 24px;
+  bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   z-index: 10;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 999px;
-  padding: 6px 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
-.carousel-pag-btn {
-  background: none;
+.hero-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  transition: all 0.25s ease;
-  color: #94a3b8;
-  font-family: 'Outfit', sans-serif;
+  padding: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.carousel-pag-btn:hover {
-  color: #ffffff;
+.hero-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
 }
 
-.carousel-pag-btn.active {
-  background: rgba(237, 28, 36, 0.2);
-  color: #ffffff;
-}
-
-.carousel-pag-btn.active.active-gold {
-  background: rgba(237, 28, 36, 0.2);
-}
-
-.pag-num {
-  font-size: 0.76rem;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  color: #ED1C24;
-}
-
-.active-gold .pag-num {
-  color: #ED1C24;
-}
-
-.pag-text {
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 0.4px;
-}
-
-.pag-bar {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-pag-btn.active .pag-progress,
-.carousel-pag-btn.active.active-gold .pag-progress {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #ED1C24 0%, #990000 100%);
-  animation: pagFill 6s linear infinite;
-}
-
-@keyframes pagFill {
-  0% {
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-
-  100% {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
+.hero-carousel-dot--active {
+  width: 32px;
+  background: #ED1C24;
+  box-shadow: 0 0 14px rgba(237, 28, 36, 0.8);
 }
 
 @media (max-width: 860px) {

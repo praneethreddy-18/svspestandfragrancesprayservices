@@ -400,93 +400,32 @@ section.section--active .faq-breadcrumb {
   }
 }
 
-/* ── Bidirectional Scroll Animations (Smooth Fade-In & Fade-Out) ── */
+/* ── Scroll Animations (Hardware-Accelerated & Smooth) ── */
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(32px) scale(0.975);
-  filter: blur(3px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* When in viewport: smooth, clear fade-in */
 .reveal-on-scroll.is-visible {
   opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
-  filter: blur(0) !important;
+  transform: none !important;
+  filter: none !important;
 }
 
-/* When scrolling out of viewport: graceful fade-out */
 .reveal-on-scroll.is-hidden {
-  opacity: 0 !important;
-  transform: translateY(-20px) scale(0.98) !important;
-  filter: blur(3px) !important;
-}
-
-/* Directional Fade-In & Fade-Out Variants */
-.reveal-fade-left {
-  opacity: 0;
-  transform: translateX(-36px);
-  filter: blur(3px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-fade-left.is-visible {
   opacity: 1 !important;
-  transform: translateX(0) !important;
-  filter: blur(0) !important;
+  transform: none !important;
+  filter: none !important;
 }
 
-.reveal-fade-left.is-hidden {
-  opacity: 0 !important;
-  transform: translateX(-24px) !important;
-  filter: blur(3px) !important;
-}
-
-.reveal-fade-right {
-  opacity: 0;
-  transform: translateX(36px);
-  filter: blur(3px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-fade-right.is-visible {
-  opacity: 1 !important;
-  transform: translateX(0) !important;
-  filter: blur(0) !important;
-}
-
-.reveal-fade-right.is-hidden {
-  opacity: 0 !important;
-  transform: translateX(24px) !important;
-  filter: blur(3px) !important;
-}
-
+.reveal-fade-left,
+.reveal-fade-right,
 .reveal-scale {
-  opacity: 0;
-  transform: scale(0.92);
-  filter: blur(4px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-scale.is-visible {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-  filter: blur(0) !important;
-}
-
-.reveal-scale.is-hidden {
-  opacity: 0 !important;
-  transform: scale(0.92) !important;
-  filter: blur(4px) !important;
+  opacity: 1;
+  transform: none;
+  filter: none;
 }
 
 /* ── Global Cross-Device Responsive Rules (Full Width Fluid Scaling) ── */

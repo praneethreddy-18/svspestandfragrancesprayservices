@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhyUs from './components/WhyUs';
@@ -14,20 +14,25 @@ import './index.css';
 const SECTION_IDS = ['home', 'services', 'why-us', 'testimonials', 'faq', 'contact'];
 
 function App() {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const activeSectionRef = useRef('home');
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let ticking = false;
 
-    const handleScroll = () => {
+    const updateScroll = () => {
       const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const currentScroll = window.scrollY;
-      if (totalScroll > 0) {
-        setScrollProgress((currentScroll / totalScroll) * 100);
+
+      // Update progress bar directly via ref (zero React re-renders)
+      if (progressBarRef.current && totalScroll > 0) {
+        const percent = Math.min(100, Math.max(0, (currentScroll / totalScroll) * 100));
+        progressBarRef.current.style.width = `${percent}%`;
       }
 
-      // Track scroll direction on body for directional animations
+      // Track scroll direction on body
       if (currentScroll > lastScrollY && currentScroll > 80) {
         document.body.classList.add('scrolling-down');
         document.body.classList.remove('scrolling-up');
@@ -50,74 +55,38 @@ function App() {
         }
       }
 
-      setActiveSection(currentActive);
+      // Only update state if active section actually changed
+      if (currentActive !== activeSectionRef.current) {
+        activeSectionRef.current = currentActive;
+        setActiveSection(currentActive);
 
-      // Add active highlight class to current section and remove from others
-      SECTION_IDS.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-          if (id === currentActive) {
-            el.classList.add('section--active');
-          } else {
-            el.classList.remove('section--active');
+        SECTION_IDS.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            if (id === currentActive) {
+              el.classList.add('section--active');
+            } else {
+              el.classList.remove('section--active');
+            }
           }
-        }
-      });
+        });
+      }
+
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Trigger on mount
-    handleScroll();
-
-    // Continuous Bidirectional Fade-In & Fade-Out Scroll Reveal Observer
-    const observerCallback: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          entry.target.classList.remove('is-hidden');
-        } else {
-          // Fade-out when scrolling away
-          entry.target.classList.remove('is-visible');
-          entry.target.classList.add('is-hidden');
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, {
-      root: null,
-      rootMargin: '0px 0px -40px 0px',
-      threshold: [0.06, 0.18],
-    });
-
-    // Auto-attach to all cards, sections, steps, FAQ, testimonials, and contact blocks
-    const attachObservers = () => {
-      const targets = document.querySelectorAll(
-        '.reveal-on-scroll, .rate-card, .whyus-feature-card, .process-pill-step, .whyus-trust-bar, .whyus-process-strip, .whyus-hero-inner, .whyus-features-grid, .testimonial-card, .testimonials-section__header, .testimonials-grid, .faq-hero-inner, .faq-numbered-card, .faq-help-box, .faq-why-box, .eco-banner-header, .eco-card, .eco-cta-strip, .contact-hero-inner, .contact-info-card, .contact-form-box, .contact-map-box, .contact-bottom-badge, .showcase-banner, .inpage-content-block, .block-header, .hero-snackz-tabs'
-      );
-
-      targets.forEach((el, index) => {
-        if (!el.classList.contains('reveal-on-scroll')) {
-          el.classList.add('reveal-on-scroll');
-        }
-        if (!(el as HTMLElement).style.transitionDelay) {
-          (el as HTMLElement).style.transitionDelay = `${(index % 4) * 0.09}s`;
-        }
-        observer.observe(el);
-      });
-    };
-
-    attachObservers();
-
-    // Re-attach whenever dynamic tabs (Pest <-> Fragrance) or content changes
-    const mutationObserver = new MutationObserver(() => {
-      attachObservers();
-    });
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
+    updateScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
-      mutationObserver.disconnect();
     };
   }, []);
 
@@ -125,8 +94,9 @@ function App() {
     <>
       {/* Top High-Tech Red/Gold Gradient Scroll Progress Bar */}
       <div
+        ref={progressBarRef}
         className="scroll-progress-bar"
-        style={{ width: `${scrollProgress}%` }}
+        style={{ width: '0%' }}
         aria-hidden="true"
       />
 
