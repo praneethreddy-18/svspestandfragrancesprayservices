@@ -25,13 +25,13 @@ export interface BookCatalog {
 
 export const PEST_CONTROL_BOOK: BookCatalog = {
   id: 'pest',
-  themeColor: '#e11d48',
+  themeColor: '#ED1C24',
   categoryTitle: 'Defense-Grade Pest Control',
   cardTitle: 'Pest Control Services',
-  cardSubtitle: 'Modern defense-certified elimination across Karimnagar with CIB-approved chemistry.',
+  cardSubtitle: 'Modern defense-certified elimination across Karimnagar with Government-approved chemistry.',
   cardImage: '/pest_control_hd.jpg',
   tagline: 'Modern Pest Management · Fast, Safe & Certified',
-  badge: 'CIB & IS Certified',
+  badge: 'Govt. Approved & Certified',
   features: ['Termite 10-Yr Warranty', 'Safe Gel Baiting', '24/7 Rapid Response', 'Audit-Ready Docs'],
   pages: [
     {
@@ -41,9 +41,9 @@ export const PEST_CONTROL_BOOK: BookCatalog = {
       subtitle: 'Karimnagar Certified Protocols',
       lead: 'A modern, agile service protecting homes, commercial complexes, and institutions in Karimnagar with cutting-edge, defense-certified pest control protocols.',
       highlightBox: {
-        badge: 'CIB-Approved',
+        badge: 'Govt-Approved',
         title: 'Rigorous Quality & Safety Standards',
-        content: 'All treatments deploy 100% Central Insecticides Board (CIB) approved active agents at strict Indian Standards (IS) concentrations. Odourless, pet-safe, and zero hazard to families.'
+        content: 'All treatments deploy 100% Government-approved active agents at strict safety standards. Odourless, pet-safe, and zero hazard to families.'
       },
       bullets: [
         {
@@ -168,7 +168,7 @@ export const PEST_CONTROL_BOOK: BookCatalog = {
 
 export const FRAGRANCE_BOOK: BookCatalog = {
   id: 'fragrance',
-  themeColor: '#d97706',
+  themeColor: '#ED1C24',
   categoryTitle: 'Luxury Ambient Scenting',
   cardTitle: 'Fragrance Spray Services',
   cardSubtitle: 'ICPC certified 8-hour cold-air diffusion technology & 50+ imported European aroma essences.',

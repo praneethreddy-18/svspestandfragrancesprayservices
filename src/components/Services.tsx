@@ -21,7 +21,7 @@ const SERVICES: ServiceItem[] = [
     id: 'termite-defense',
     division: 'pest',
     divisionBadge: 'Defense Grade',
-    divisionColor: '#e11d48',
+    divisionColor: '#ED1C24',
     image: '/termite_svc.jpg',
     icon: (
       <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -30,16 +30,16 @@ const SERVICES: ServiceItem[] = [
     ),
     title: 'Pre & Post Termite Treatment',
     desc: 'Subterranean termite chemical barrier with drilling & pressure injection technology for foundations and woodwork.',
-    features: ['CIB-Approved Termiticide', 'Pressure Drilling & Misting', 'Hitech City & Gachibowli Protocol', 'Audit-Ready Certificate'],
+    features: ['Govt-Approved Termiticide', 'Pressure Drilling & Misting', 'Hitech City & Gachibowli Protocol', 'Audit-Ready Certificate'],
     pricing: 'Free On-Site Inspection',
     warranty: 'Up to 10-Year Warranty',
-    color: '#e11d48',
+    color: '#ED1C24',
   },
   {
     id: 'cockroach-baiting',
     division: 'pest',
     divisionBadge: 'Safe Gel Tech',
-    divisionColor: '#e11d48',
+    divisionColor: '#ED1C24',
     image: '/cockroach_svc.jpg',
     icon: (
       <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -51,13 +51,13 @@ const SERVICES: ServiceItem[] = [
     features: ['No Need to Empty Kitchen', '100% Odourless & Safe', 'Targets Nest Cascades', 'Follow-up Guarantee'],
     pricing: 'Custom Tailored Quote',
     warranty: '100% Eradication Guarantee',
-    color: '#ff4d79',
+    color: '#ED1C24',
   },
   {
     id: 'bedbug-thermal',
     division: 'pest',
     divisionBadge: 'Single Visit',
-    divisionColor: '#e11d48',
+    divisionColor: '#ED1C24',
     image: '/bedbug_svc.jpg',
     icon: (
       <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -69,13 +69,13 @@ const SERVICES: ServiceItem[] = [
     features: ['Crack & Crevice Infusion', 'Mattress & Headboard Safe', 'Rapid Egg Neutralization', 'Residential & Hotel Suites'],
     pricing: 'Written Guarantee Quote',
     warranty: 'Service Warranty Included',
-    color: '#f43f5e',
+    color: '#ED1C24',
   },
   {
     id: 'rodent-control',
     division: 'pest',
     divisionBadge: 'Scientific Proofing',
-    divisionColor: '#e11d48',
+    divisionColor: '#ED1C24',
     image: '/rodent_svc.jpg',
     icon: (
       <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -87,13 +87,13 @@ const SERVICES: ServiceItem[] = [
     features: ['Tamper-Resistant Stations', 'Structural Hole Exclusion', 'Prevents Wire Gnawing', 'Audit-Ready Docs'],
     pricing: 'Site Assessment Quote',
     warranty: 'Guaranteed Containment',
-    color: '#e11d48',
+    color: '#ED1C24',
   },
   {
     id: 'mosquito-fogging',
     division: 'pest',
     divisionBadge: 'Vector Defense',
-    divisionColor: '#e11d48',
+    divisionColor: '#ED1C24',
     image: '/mosquito_svc.jpg',
     icon: (
       <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -105,7 +105,7 @@ const SERVICES: ServiceItem[] = [
     features: ['Dengue/Malaria Prevention', 'Organic Water Treatment', 'Thermal & Cold Fogging', 'Villas & Gated Societies'],
     pricing: 'Area-Based Inspection',
     warranty: 'Immediate Adulticide Impact',
-    color: '#ff4d79',
+    color: '#ED1C24',
   },
   {
     id: 'woodborer-disinfection',
@@ -129,7 +129,7 @@ const SERVICES: ServiceItem[] = [
     id: 'cold-air-fragrance',
     division: 'fragrance',
     divisionBadge: '8-Hour Formula',
-    divisionColor: '#d97706',
+    divisionColor: '#ED1C24',
     image: '/fragrance_hd.jpg',
     icon: (
       <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -141,13 +141,13 @@ const SERVICES: ServiceItem[] = [
     features: ['Up to 5,000 Sq. Ft. Per Unit', 'No Burning, Zero Residue', 'Acoustically Silent', 'Hotel Lobbies & Banquets'],
     pricing: 'Turnkey 8-Hour Session',
     warranty: 'Continuous 8-Hr Output',
-    color: '#d97706',
+    color: '#ED1C24',
   },
   {
     id: 'luxury-scent-collections',
     division: 'fragrance',
     divisionBadge: '50+ European Scents',
-    divisionColor: '#d97706',
+    divisionColor: '#ED1C24',
     image: '/fragrance_hd.jpg',
     icon: (
       <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -159,7 +159,7 @@ const SERVICES: ServiceItem[] = [
     features: ['100% Pure Aroma Oils', 'No Alcohol Dilution', 'Custom Signature Blends', 'Luxury Events & Weddings'],
     pricing: 'Tailored Event Packages',
     warranty: 'IFRA Geneva Certified',
-    color: '#f59e0b',
+    color: '#ED1C24',
   },
 ];
 

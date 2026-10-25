@@ -1,107 +1,168 @@
-/* ── Floating Mobile Quick-Action Bar ── */
-.floating-actions-bar {
+/* ============================================================
+   FLOATING ACTION BUTTONS — ICONS-ONLY ON RIGHT CORNER
+   Brand Red Call Button (#ED1C24 & #990000) + Official WhatsApp
+   ============================================================ */
+
+.floating-actions-corner {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 24px;
+  right: 22px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  background: rgba(15, 17, 24, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  padding: 8px 12px;
-  border-radius: 999px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(225, 29, 72, 0.25);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  z-index: 999;
-  animation: floatBarIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  gap: 12px;
+  z-index: 9990;
+  pointer-events: auto;
+  animation: floatCornerIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes floatBarIn {
+@keyframes floatCornerIn {
   from {
     opacity: 0;
-    transform: translate(-50%, 30px) scale(0.92);
+    transform: translateY(20px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, 0) scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
-.floating-action-btn {
-  display: inline-flex;
+.floating-corner-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 800;
   text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.floating-action-call {
-  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+/* Call Button: Brand Vivid Red to Dark Red (#ED1C24 -> #990000) */
+.floating-corner-call {
+  background: linear-gradient(135deg, #ED1C24 0%, #990000 100%);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.45);
+  box-shadow: 0 8px 22px rgba(237, 28, 36, 0.42), 0 2px 6px rgba(0, 0, 0, 0.15);
+  animation: fabPulseRed 3.2s infinite ease-in-out;
 }
 
-.floating-action-call:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(225, 29, 72, 0.7);
+.floating-corner-call:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 12px 28px rgba(237, 28, 36, 0.65), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.floating-corner-call:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* WhatsApp Button: Official WhatsApp Green */
+.floating-corner-wa {
+  background: #25D366;
   color: #ffffff;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.42), 0 2px 6px rgba(0, 0, 0, 0.15);
+  animation: fabPulseGreen 3.2s infinite ease-in-out 1.6s;
 }
 
-.floating-action-wa {
-  background: rgba(37, 211, 102, 0.18);
-  border: 1px solid rgba(37, 211, 102, 0.5);
-  color: #25d366;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+.floating-corner-wa:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.65), 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: #22c55e;
 }
 
-.floating-action-wa:hover {
-  background: #25d366;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.6);
+.floating-corner-wa:active {
+  transform: translateY(0) scale(0.96);
 }
 
-.floating-action-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.floating-action-svg {
+.floating-wa-svg {
   display: block;
   flex-shrink: 0;
+  width: 28px;
+  height: 28px;
 }
 
-/* Visibility rules: prominent on mobile/tablets, subtle on desktop */
-@media (min-width: 900px) {
-  .floating-actions-bar {
-    bottom: 26px;
-    right: 28px;
-    left: auto;
-    transform: none;
+/* ── Modern Tooltips (Display to the left on Desktop Hover) ── */
+.floating-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: #0f172a;
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.3px;
+}
+
+.floating-tooltip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #0f172a;
+}
+
+.floating-corner-btn:hover .floating-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ── Subtle Ambient Breathing Glow Animation ── */
+@keyframes fabPulseRed {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(237, 28, 36, 0.4), 0 0 0 0 rgba(237, 28, 36, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 26px rgba(237, 28, 36, 0.55), 0 0 0 8px rgba(237, 28, 36, 0);
   }
 }
 
-@media (max-width: 480px) {
-  .floating-actions-bar {
-    width: calc(100% - 28px);
-    max-width: 380px;
-    bottom: 14px;
-    padding: 6px 8px;
-    justify-content: stretch;
+@keyframes fabPulseGreen {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.4);
   }
-  .floating-action-btn {
-    flex: 1;
-    padding: 11px 12px;
-    font-size: 0.85rem;
-    justify-content: center;
+  50% {
+    box-shadow: 0 8px 26px rgba(37, 211, 102, 0.55), 0 0 0 8px rgba(37, 211, 102, 0);
+  }
+}
+
+/* ── Mobile Optimization (Stays Compact in Right Corner) ── */
+@media (max-width: 768px) {
+  .floating-actions-corner {
+    bottom: 18px;
+    right: 16px;
+    gap: 10px;
+  }
+
+  .floating-corner-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-wa-svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* Don't show hover tooltips on touch screens */
+  .floating-tooltip {
+    display: none !important;
   }
 }

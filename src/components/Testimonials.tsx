@@ -1,84 +1,136 @@
-import type { CSSProperties } from 'react';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight, Star, CheckCircle2 } from 'lucide-react';
 import './Testimonials.css';
 
 const TESTIMONIALS = [
   {
     id: 'test-1',
-    name: 'Ramesh Kumar',
-    role: 'Homeowner, Karimnagar',
-    avatar: '👨‍💼',
+    name: 'K. Ramesh Reddy',
+    role: 'Homeowner, Mukarampura',
+    initials: 'KR',
     rating: 5,
-    text: 'SVS Pest Services did an excellent job! They got rid of the cockroach problem in our kitchen within a single visit. Very professional team and eco-safe products — safe for our kids.',
+    text: 'SVS Pest Control was professional, responsive and very effective. Their odorless gel baiting solved our kitchen cockroach problem in just one visit. Our home is finally pest-free!',
   },
   {
     id: 'test-2',
     name: 'Priya Sharma',
-    role: 'Business Owner, Mukarampura, Karimnagar',
-    avatar: '👩‍💼',
+    role: 'Boutique Owner, Collectorate Road',
+    initials: 'PS',
     rating: 5,
-    text: 'We had a severe termite issue in our office building. The SVS team handled it efficiently with minimal disruption. The 5-year warranty gave us real peace of mind.',
+    text: 'Excellent service and great results. We booked their 8-hour cold diffusion scenting for our showroom opening. The team was knowledgeable, punctual, and made the whole process easy.',
   },
   {
     id: 'test-3',
-    name: 'Suresh Reddy',
-    role: 'Apartment Resident, Collectorate Road, Karimnagar',
-    avatar: '🧑‍💼',
+    name: 'V. Suresh Kumar',
+    role: 'Apartment Resident, Jyothinagar',
+    initials: 'VS',
     rating: 5,
-    text: 'Their fragrance spray service is absolutely amazing. The scent lasts for weeks and the variety of options is impressive. Highly recommend their combo packages!',
+    text: 'Highly recommend SVS Pest Control! They were on time, courteous and resolved our persistent termite issue quickly. The written warranty gave us complete peace of mind.',
   },
   {
     id: 'test-4',
-    name: 'Lakshmi Naidu',
-    role: 'Restaurateur, Jyothinagar, Karimnagar',
-    avatar: '👩‍🍳',
+    name: 'Ch. Venkat Ramana',
+    role: 'Restaurant Manager, Mankammathota',
+    initials: 'VR',
     rating: 5,
-    text: 'Running a restaurant, pest-free certification is critical for us. SVS has been our trusted partner for 3 years. Prompt, reliable, and affordable — 10/10!',
+    text: 'In the food business, hygiene compliance is critical. SVS handles our regular pest management with 100% safe, non-toxic products and audit-ready documentation. Outstanding service!',
+  },
+  {
+    id: 'test-5',
+    name: 'M. Anitha Rao',
+    role: 'Homeowner, Kashmirgadda',
+    initials: 'AR',
+    rating: 5,
+    text: 'Very impressed with their eco-safe chemistry. With toddlers and elderly parents at home, safety was our top concern. Zero chemical smell, zero mess, and highly effective results.',
+  },
+  {
+    id: 'test-6',
+    name: 'T. Rajeshwar Rao',
+    role: 'Function Hall Manager, Padmanagar',
+    initials: 'TR',
+    rating: 5,
+    text: 'Booked both general pest disinfection and ambient scenting for a grand wedding reception. The venue smelled divine throughout the evening and zero insect disturbance. 10/10 service!',
   },
 ];
 
 export default function Testimonials() {
+  const [startIndex, setStartIndex] = useState(0);
+
+  const nextSlide = () => {
+    setStartIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+  };
+
+  const prevSlide = () => {
+    setStartIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  };
+
+  const displayedTestimonials = [
+    TESTIMONIALS[startIndex % TESTIMONIALS.length],
+    TESTIMONIALS[(startIndex + 1) % TESTIMONIALS.length],
+    TESTIMONIALS[(startIndex + 2) % TESTIMONIALS.length],
+  ];
+
   return (
     <section id="testimonials" className="testimonials-section">
-      <div className="testimonials-section__glow" aria-hidden="true" />
       <div className="container">
+        {/* Header matching reference */}
         <div className="testimonials-section__header">
-          <div className="section-tag"><span className="dot" />Testimonials</div>
-          <h2 className="section-title">
-            Loved by <span>Homes & Businesses</span> Across Karimnagar
+          <h2 className="testimonials-title">
+            WHAT OUR <span className="title-red">CUSTOMERS SAY</span>
           </h2>
-          <p className="section-subtitle">
-            Real feedback from local residents and business owners experiencing our modern pest & fragrance services.
+          <p className="testimonials-subtitle">
+            We're proud to help homeowners and businesses stay pest-free. Here's what some of our customers have to say.
           </p>
         </div>
 
+        {/* Testimonials Grid matching reference */}
         <div className="testimonials-grid">
-          {TESTIMONIALS.map((t, i) => (
-            <article
-              key={t.id}
-              id={t.id}
-              className="glass-card testimonial-card"
-              style={{ animationDelay: `${i * 0.1}s` } as CSSProperties}
-            >
-              {/* Stars */}
-              <div className="testimonial-card__stars" aria-label={`${t.rating} stars`}>
+          {displayedTestimonials.map((t, idx) => (
+            <article key={`${t.id}-${idx}`} className="testimonial-card">
+              {/* Star Rating */}
+              <div className="testimonial-card__stars">
                 {Array.from({ length: t.rating }).map((_, si) => (
-                  <svg key={si} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
+                  <Star key={si} size={18} fill="#f59e0b" color="#f59e0b" />
                 ))}
               </div>
-              {/* Quote */}
-              <blockquote className="testimonial-card__text">"{t.text}"</blockquote>
-              {/* Author */}
-              <div className="testimonial-card__author">
-                <div className="testimonial-card__avatar">{t.avatar}</div>
-                <div>
-                  <div className="testimonial-card__name">{t.name}</div>
-                  <div className="testimonial-card__role">{t.role}</div>
+
+              {/* Quote Text */}
+              <p className="testimonial-card__text">
+                "{t.text}"
+              </p>
+
+              {/* Author & Large Watermark Quote */}
+              <div className="testimonial-card__footer">
+                <div className="testimonial-card__author">
+                  <div className="testimonial-card__avatar">
+                    <span className="testimonial-initials">{t.initials}</span>
+                  </div>
+                  <div>
+                    <div className="testimonial-name-row">
+                      <h4 className="testimonial-card__name">{t.name}</h4>
+                      <span className="verified-badge">
+                        <CheckCircle2 size={12} color="#16a34a" strokeWidth={3} />
+                        Verified
+                      </span>
+                    </div>
+                    <p className="testimonial-card__role">{t.role}</p>
+                  </div>
                 </div>
+
+                <span className="testimonial-watermark">”</span>
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Carousel Arrow Controls */}
+        <div className="testimonials-controls">
+          <button className="carousel-arrow-btn" onClick={prevSlide} aria-label="Previous testimonials">
+            <ChevronLeft size={20} strokeWidth={2.5} />
+          </button>
+          <button className="carousel-arrow-btn carousel-arrow-btn--active" onClick={nextSlide} aria-label="Next testimonials">
+            <ChevronRight size={20} strokeWidth={2.5} />
+          </button>
         </div>
       </div>
     </section>
