@@ -126,6 +126,60 @@ const SERVICES: ServiceItem[] = [
     color: '#10b981',
   },
   {
+    id: 'fly-control',
+    division: 'pest',
+    divisionBadge: 'UV & Sanitation',
+    divisionColor: '#ED1C24',
+    image: '/fly_svc.jpg',
+    icon: (
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
+    title: 'Fly Control & UV Electronic Trapping',
+    desc: 'Targeted indoor UV fly traps, commercial drain treatments, and food-grade organic spray barriers.',
+    features: ['UV Fly Light Units', 'Drain Breeding Neutralization', 'Odorless Food-Grade Barriers', 'HACCP Restaurant Compliant'],
+    pricing: 'Site Evaluation Quote',
+    warranty: 'Immediate Reduction Guarantee',
+    color: '#ED1C24',
+  },
+  {
+    id: 'lizard-control',
+    division: 'pest',
+    divisionBadge: 'Herbal Repellent',
+    divisionColor: '#ED1C24',
+    image: '/lizard_svc.jpg',
+    icon: (
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    title: 'Herbal Lizard & Gecko Repellent',
+    desc: 'Non-lethal herbal repellent barrier and perimeter sealant deterring house geckos and wall lizards.',
+    features: ['100% Herbal & Odorless', 'Wall Perimeter Spray Barrier', 'Safe for Infants & Pets', 'Entry-Point Exclusion'],
+    pricing: 'Free Property Inspection',
+    warranty: 'Long-Lasting Deterrent',
+    color: '#ED1C24',
+  },
+  {
+    id: 'honeybee-removal',
+    division: 'pest',
+    divisionBadge: 'Eco Relocation',
+    divisionColor: '#ED1C24',
+    image: '/honeybee_svc.jpg',
+    icon: (
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+      </svg>
+    ),
+    title: 'Safe Honey Bee Removal & Relocation',
+    desc: 'Professional beekeeping smoke relocation moving wild colonies safely without harmful chemicals or structural damage.',
+    features: ['Humane Smoke Relocation', 'No Chemical Insecticides', 'Tree, Roof & Balcony Rescue', 'Scent Neutralization'],
+    pricing: 'Immediate Emergency Callout',
+    warranty: 'Zero Re-Nesting Guarantee',
+    color: '#ED1C24',
+  },
+  {
     id: 'cold-air-fragrance',
     division: 'fragrance',
     divisionBadge: '8-Hour Formula',
@@ -174,19 +228,23 @@ export default function Services() {
     const contactSection = document.querySelector('#contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
-      // pre-fill service dropdown if input exists
-      const selectEl = document.querySelector('#service') as HTMLSelectElement | null;
-      if (selectEl) {
-        if (title.includes('Termite')) selectEl.value = 'Termite Treatment';
-        else if (title.includes('Rodent')) selectEl.value = 'Rodent Control';
-        else if (title.includes('Mosquito')) selectEl.value = 'Mosquito & Fly Control';
-        else if (title.includes('Disinfection') || title.includes('Sanitization')) selectEl.value = 'Sanitization & Disinfection';
-        else if (title.includes('Fragrance') || title.includes('Aroma')) selectEl.value = 'Fragrance Spray Service';
-        else selectEl.value = 'General Pest Control';
+      
+      let svcName = title;
+      if (title.includes('Cockroach')) svcName = 'Cockroach Control';
+      else if (title.includes('Termite')) svcName = 'Termite Treatment';
+      else if (title.includes('Bedbug') || title.includes('Bed Bug')) svcName = 'Bed Bug Control';
+      else if (title.includes('Fly')) svcName = 'Fly Control';
+      else if (title.includes('Mosquito')) svcName = 'Mosquito Control';
+      else if (title.includes('Ant')) svcName = 'Ant Control';
+      else if (title.includes('Rodent')) svcName = 'Rodent Control';
+      else if (title.includes('Lizard')) svcName = 'Lizard Control';
+      else if (title.includes('Spider')) svcName = 'Spider Control';
+      else if (title.includes('Bee')) svcName = 'Honey Bee Removal';
+      else if (title.includes('Residential')) svcName = 'Residential Pest Control';
+      else if (title.includes('Commercial')) svcName = 'Commercial Pest Control';
+      else if (title.includes('Fragrance') || title.includes('Aroma') || title.includes('Oud')) svcName = 'Luxury Ambient Fragrance Scenting';
 
-        // Trigger change event so React form state updates
-        selectEl.dispatchEvent(new Event('change', { bubbles: true }));
-      }
+      window.dispatchEvent(new CustomEvent('svs-select-service', { detail: { serviceName: svcName } }));
     }
   };
 

@@ -133,6 +133,66 @@ const PEST_CARDS: ServiceCardData[] = [
     icon: <Radar size={24} color="#ED1C24" strokeWidth={2.2} />
   },
   {
+    id: 'bedbug-control',
+    image: '/bedbug_svc.jpg',
+    badge: 'Thermal & Chemical',
+    tag: 'Bed Bugs',
+    price: 'Free Inspection',
+    title: 'Bed Bug Control',
+    desc: 'Eliminate stubborn bed bug infestations from mattresses, headboards, and furniture using high-temperature thermal misting and targeted contact treatments.',
+    features: [
+      'Deep crack & crevice thermal infusion for eggs & nymphs',
+      'Mattress, box spring, and upholstered furniture safe',
+      'Immediate relief with scheduled follow-up protection'
+    ],
+    icon: <Flame size={24} color="#ED1C24" strokeWidth={2.2} />
+  },
+  {
+    id: 'fly-control',
+    image: '/fly_svc.jpg',
+    badge: 'UV Trap & Sanitation',
+    tag: 'Flies',
+    price: 'Free Inspection',
+    title: 'Fly Control',
+    desc: 'Keep dining areas, commercial kitchens, and residences hygienic with targeted fly management, modern UV light traps, and organic drain sanitization.',
+    features: [
+      'Advanced commercial UV electronic fly-catcher systems',
+      'Drain & organic waste breeding ground neutralization',
+      'Odorless food-grade indoor barrier treatment'
+    ],
+    icon: <Target size={24} color="#ED1C24" strokeWidth={2.2} />
+  },
+  {
+    id: 'lizard-control',
+    image: '/lizard_svc.jpg',
+    badge: 'Herbal Repellent',
+    tag: 'Lizards',
+    price: 'Free Inspection',
+    title: 'Lizard Control',
+    desc: 'Deter common house geckos and wall lizards safely using non-lethal, herbal odorless repellents and structural entry-point exclusion.',
+    features: [
+      '100% herbal & chemical-free deterrent formulations',
+      'Baseboard, ceiling perimeter, and vent barrier coating',
+      'Safe around infants, elderly family members, and pets'
+    ],
+    icon: <Leaf size={24} color="#ED1C24" strokeWidth={2.2} />
+  },
+  {
+    id: 'honeybee-removal',
+    image: '/honeybee_svc.jpg',
+    badge: 'Humane Relocation',
+    tag: 'Honey Bees',
+    price: 'Free Inspection',
+    title: 'Honey Bee Removal',
+    desc: 'Safely and humanely remove and relocate wild bee hives from balconies, trees, and roofs without harming the bees or damaging your property.',
+    features: [
+      'Professional beekeeper suits & humane smoke relocation',
+      'Zero toxic pesticides — protects pollinators & biodiversity',
+      'Complete hive scent masking to prevent future re-nesting'
+    ],
+    icon: <Flower2 size={24} color="#ED1C24" strokeWidth={2.2} />
+  },
+  {
     id: 'residential-pest-control',
     image: '/svc_residential.jpg',
     badge: 'Whole Home Defense',
@@ -286,22 +346,28 @@ export default function Hero() {
     const contactSection = document.querySelector('#contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
-      const selectEl = document.querySelector('#service') as HTMLSelectElement | null;
-      if (selectEl) {
-        if (title.includes('Termite')) selectEl.value = 'Termite Treatment';
-        else if (title.includes('Cockroach')) selectEl.value = 'General Pest Control';
-        else if (title.includes('Rodent')) selectEl.value = 'Rodent Control';
-        else if (title.includes('Mosquito')) selectEl.value = 'Mosquito & Fly Control';
-        else if (title.includes('Fragrance') || title.includes('Aroma')) selectEl.value = 'Fragrance Spray Service';
-        else selectEl.value = 'General Pest Control';
+      
+      let svcName = title;
+      if (title.includes('Cockroach')) svcName = 'Cockroach Control';
+      else if (title.includes('Termite')) svcName = 'Termite Treatment';
+      else if (title.includes('Bed Bug') || title.includes('Bedbug')) svcName = 'Bed Bug Control';
+      else if (title.includes('Fly')) svcName = 'Fly Control';
+      else if (title.includes('Mosquito')) svcName = 'Mosquito Control';
+      else if (title.includes('Ant')) svcName = 'Ant Control';
+      else if (title.includes('Rodent')) svcName = 'Rodent Control';
+      else if (title.includes('Lizard')) svcName = 'Lizard Control';
+      else if (title.includes('Spider')) svcName = 'Spider Control';
+      else if (title.includes('Bee')) svcName = 'Honey Bee Removal';
+      else if (title.includes('Residential')) svcName = 'Residential Pest Control';
+      else if (title.includes('Commercial')) svcName = 'Commercial Pest Control';
+      else if (title.includes('Fragrance') || title.includes('Aroma') || title.includes('Oud')) svcName = 'Luxury Ambient Fragrance Scenting';
 
-        selectEl.dispatchEvent(new Event('change', { bubbles: true }));
-      }
+      window.dispatchEvent(new CustomEvent('svs-select-service', { detail: { serviceName: svcName } }));
     }
   };
 
   // Quick filter categories matching reference cards
-  const pestTags = ['All', 'Cockroaches', 'Termites', 'Mosquitoes', 'Ants', 'Rodents', 'Spiders', 'Residential', 'Commercial'];
+  const pestTags = ['All', 'Cockroaches', 'Termites', 'Mosquitoes', 'Ants', 'Rodents', 'Spiders', 'Bed Bugs', 'Flies', 'Lizards', 'Honey Bees', 'Residential', 'Commercial'];
   const fragranceTags = ['All', 'Oud & Arabian', 'Woody & Rich', 'Sweet & Vanilla', 'Citrus & Floral', 'Brand Signatures'];
 
   const currentTags = activeDivision === 'pest' ? pestTags : fragranceTags;
@@ -655,7 +721,7 @@ export default function Hero() {
                   <Search size={18} strokeWidth={2.2} color="#64748b" />
                   <input
                     type="text"
-                    placeholder="Search cockroach, termite, mosquito, ant, rodent, spider, residential, commercial..."
+                    placeholder="Search cockroach, termite, mosquito, bed bug, fly, lizard, bee, ant, rodent..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="hero-search-input"

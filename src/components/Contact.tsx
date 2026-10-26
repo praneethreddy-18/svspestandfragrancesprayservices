@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useState, useEffect, type ChangeEvent, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import {
   Phone,
@@ -18,11 +18,15 @@ const ALL_SERVICES = [
   'Cockroach Control',
   'Termite Treatment',
   'Bed Bug Control',
-  'Mosquito Fogging',
+  'Fly Control',
+  'Mosquito Control',
+  'Ant Control',
   'Rodent Control',
-  'Wood Borer & Disinfection',
-  'Residential Full Protection',
-  'Commercial Complex Management',
+  'Lizard Control',
+  'Spider Control',
+  'Honey Bee Removal',
+  'Residential Pest Control',
+  'Commercial Pest Control',
   'Luxury Ambient Fragrance Scenting',
 ];
 
@@ -35,6 +39,21 @@ export default function Contact() {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const handleExternalSelect = (e: Event) => {
+      const customEvent = e as CustomEvent<{ serviceName: string }>;
+      const targetSvc = customEvent.detail?.serviceName;
+      if (targetSvc && ALL_SERVICES.includes(targetSvc)) {
+        setForm(f => ({
+          ...f,
+          services: f.services.includes(targetSvc) ? f.services : [...f.services, targetSvc]
+        }));
+      }
+    };
+    window.addEventListener('svs-select-service', handleExternalSelect);
+    return () => window.removeEventListener('svs-select-service', handleExternalSelect);
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
